@@ -19,7 +19,7 @@ class _ProfileState extends State<Profile> {
             child: Column(
           children: [
             SizedBox(
-              height: size.height * .15,
+              height: size.height * .10,
               child: Container(
                 color: primaryColor,
                 child: Center(
@@ -55,40 +55,43 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
-            SizedBox(
-              height: size.height * .70,
-              child: ListView(
-                children: [
-                  const SeeAll(left: 'Account', right: '', bold: false),
-                  items(Icons.person, 'Profile Information',
-                      'Change your account information'),
-                  items(Icons.location_pin, 'Delivery Address',
-                      'Add or remove your address locations'),
-                  items(Icons.favorite, 'Wishlist',
-                      'Add or remove your favorites products'),
-                  items(Icons.notifications_rounded, 'Notification',
-                      'Get updates of letest actions'),
-                  items(Icons.settings, 'Settings',
-                      'Update your settings, change password, etc.'),
-                  const SeeAll(left: 'General', right: '', bold: false),
-                  items(Icons.star, 'Rate Us', 'Rate us on our playstore'),
-                  items(Icons.error, 'Help & Support',
-                      'Get help when you need it'),
-                  items(Icons.exit_to_app, 'Logout',
-                      'Add or remove your favorites products'),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                    child: Text(
-                      'Delete my account',
-                      style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.red,
-                          fontWeight: FontWeight.w800),
+            LayoutBuilder(builder: (context, constraints) {
+              return SizedBox(
+                height: size.height * .70,
+                child: ListView(
+                  children: [
+                    const SeeAll(left: 'Account', right: '', bold: false),
+                    items(Icons.person, 'Profile Information',
+                        'Change your account information'),
+                    items(Icons.location_pin, 'Delivery Address',
+                        'Add or remove your address locations'),
+                    items(Icons.favorite, 'Wishlist',
+                        'Add or remove your favorites products'),
+                    items(Icons.notifications_rounded, 'Notification',
+                        'Get updates of letest actions'),
+                    items(Icons.settings, 'Settings',
+                        'Update your settings, change password, etc.'),
+                    const SeeAll(left: 'General', right: '', bold: false),
+                    items(Icons.star, 'Rate Us', 'Rate us on our playstore'),
+                    items(Icons.error, 'Help & Support',
+                        'Get help when you need it'),
+                    items(Icons.exit_to_app, 'Logout',
+                        'Add or remove your favorites products'),
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                      child: Text(
+                        'Delete my account',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.red,
+                            fontWeight: FontWeight.w800),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
+                  ],
+                ),
+              );
+            }),
           ],
         )),
       ),

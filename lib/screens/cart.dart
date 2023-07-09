@@ -26,30 +26,34 @@ class _CartState extends State<Cart> {
               height: size.height,
               child: Column(children: [
                 Container(
+                    height: size.height * .10,
                     color: primaryColor,
                     child: SeeAll(left: '', right: 'MZN 300.0', bold: true)),
                 Expanded(
                   child: ListView(
                     shrinkWrap: true,
-                    children: [
+                    children: const [
                       RowProductCard(
                           imgpath: 'assets/frango.jpg',
                           price: 100.0,
                           name: 'Wings',
                           star: 3,
-                          fav: true),
+                          fav: true,
+                          added: true),
                       RowProductCard(
                           imgpath: 'assets/frango.jpg',
                           price: 100.0,
                           name: 'Wings',
                           star: 3,
-                          fav: true),
+                          fav: true,
+                          added: true),
                       RowProductCard(
                           imgpath: 'assets/frango.jpg',
                           price: 100.0,
                           name: 'Wings',
                           star: 3,
-                          fav: true),
+                          fav: true,
+                          added: true),
                     ],
                   ),
                 ),

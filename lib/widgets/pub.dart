@@ -9,13 +9,13 @@ class Pub extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Card(
       elevation: 2,
-      child: SizedBox(
-          height: size.height * .2,
-          width: size.width,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Image.asset(imgpath, fit: BoxFit.fill),
-          )),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
+        child: SizedBox(
+            width: size.width,
+            height: size.height / 4,
+            child: Image.asset(imgpath, fit: BoxFit.fill)),
+      ),
     );
   }
 }

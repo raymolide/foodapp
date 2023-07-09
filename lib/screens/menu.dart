@@ -133,157 +133,159 @@ class _MenuState extends State<Menu> {
             ),
           ),
           Expanded(
-            child: NestedScrollView(
-              floatHeaderSlivers: true,
-              headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return [];
+            child: PageView(
+              controller: controller,
+              scrollDirection: Axis.vertical,
+              onPageChanged: (index) {
+                setState(() {
+                  activeAppetizer = false;
+                  activeBeverages = false;
+                  activePizzas = false;
+                  activeDesserts = false;
+                  activeFruits = false;
+                  activeSalad = false;
+                  switch (index) {
+                    case 0:
+                      activeAppetizer = true;
+                      break;
+                    case 1:
+                      activeBeverages = true;
+                      break;
+                    case 2:
+                      activeFruits = true;
+                      break;
+                  }
+                });
               },
-              body: PageView(
-                controller: controller,
-                scrollDirection: Axis.vertical,
-                onPageChanged: (index) {
-                  setState(() {
-                    activeAppetizer = false;
-                    activeBeverages = false;
-                    activePizzas = false;
-                    activeDesserts = false;
-                    activeFruits = false;
-                    activeSalad = false;
-                    switch (index) {
-                      case 0:
-                        activeAppetizer = true;
-                        break;
-                      case 1:
-                        activeBeverages = true;
-                        break;
-                      case 2:
-                        activeFruits = true;
-                        break;
-                    }
-                  });
-                },
-                children: [
-                  ListView(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    children: [
-                      Column(
-                        children: const [
-                          ListTile(
-                            title: Text(
-                              'Appetizers',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            ),
+              children: [
+                ListView(
+                  children: [
+                    Column(
+                      children: const [
+                        ListTile(
+                          title: Text(
+                            'Appetizers',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w600),
                           ),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                        ],
-                      ),
-                    ],
-                  ),
-                  ListView(
-                    children: [
-                      Column(
-                        children: const [
-                          ListTile(
-                            title: Text(
-                              'Beverages',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            ),
+                        ),
+                        RowProductCard(
+                            imgpath: 'assets/frango.jpg',
+                            price: 100.0,
+                            name: 'Wings',
+                            star: 3,
+                            fav: true,
+                            added: false),
+                        RowProductCard(
+                            imgpath: 'assets/frango.jpg',
+                            price: 100.0,
+                            name: 'Wings',
+                            star: 3,
+                            fav: true,
+                            added: false),
+                        RowProductCard(
+                            imgpath: 'assets/frango.jpg',
+                            price: 100.0,
+                            name: 'Wings',
+                            star: 3,
+                            fav: true,
+                            added: false),
+                      ],
+                    ),
+                  ],
+                ),
+                ListView(
+                  children: [
+                    Column(
+                      children: const [
+                        ListTile(
+                          title: Text(
+                            'Beverages',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w600),
                           ),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                        ],
+                        ),
+                        RowProductCard(
+                            imgpath: 'assets/frango.jpg',
+                            price: 100.0,
+                            name: 'Wings',
+                            star: 3,
+                            fav: true,
+                            added: false),
+                        RowProductCard(
+                            imgpath: 'assets/frango.jpg',
+                            price: 100.0,
+                            name: 'Wings',
+                            star: 3,
+                            fav: true,
+                            added: false),
+                        RowProductCard(
+                            imgpath: 'assets/frango.jpg',
+                            price: 100.0,
+                            name: 'Wings',
+                            star: 3,
+                            fav: true,
+                            added: false),
+                      ],
+                    ),
+                  ],
+                ),
+                ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: const [
+                    ListTile(
+                      title: Text(
+                        'Fruits',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w600),
                       ),
-                    ],
-                  ),
-                  ListView(
-                    shrinkWrap: true,
-                    children: [
-                      Column(
-                        children: const [
-                          ListTile(
-                            title: Text(
-                              'Fruits',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                          RowProductCard(
-                              imgpath: 'assets/massa.jpg',
-                              price: 100.0,
-                              name: 'Massa',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/potChicken.jpg',
-                              price: 400.0,
-                              name: 'Chicken Masala',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/rice.jpg',
-                              price: 180.0,
-                              name: 'Rice',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                          RowProductCard(
-                              imgpath: 'assets/frango.jpg',
-                              price: 100.0,
-                              name: 'Wings',
-                              star: 3,
-                              fav: true),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    RowProductCard(
+                        imgpath: 'assets/massa.jpg',
+                        price: 100.0,
+                        name: 'Massa',
+                        star: 3,
+                        fav: true,
+                        added: false),
+                    RowProductCard(
+                        imgpath: 'assets/potChicken.jpg',
+                        price: 400.0,
+                        name: 'Chicken Masala',
+                        star: 3,
+                        fav: true,
+                        added: false),
+                    RowProductCard(
+                        imgpath: 'assets/rice.jpg',
+                        price: 180.0,
+                        name: 'Rice',
+                        star: 3,
+                        fav: true,
+                        added: false),
+                    RowProductCard(
+                        imgpath: 'assets/frango.jpg',
+                        price: 100.0,
+                        name: 'Wings',
+                        star: 3,
+                        fav: true,
+                        added: false),
+                    RowProductCard(
+                        imgpath: 'assets/frango.jpg',
+                        price: 100.0,
+                        name: 'Wings',
+                        star: 3,
+                        fav: true,
+                        added: false),
+                    RowProductCard(
+                        imgpath: 'assets/frango.jpg',
+                        price: 100.0,
+                        name: 'Wings',
+                        star: 3,
+                        fav: true,
+                        added: false),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

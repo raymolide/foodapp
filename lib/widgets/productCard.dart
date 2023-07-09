@@ -32,150 +32,107 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return LayoutBuilder(builder: (context, constraints) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2.0),
-        child: Card(
-          elevation: 2,
-          color: productColor,
-          child: Column(
-            children: [
-              SizedBox(
-                width: size.width * .45,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      width: constraints.maxWidth * .4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                              height: size.height * .150,
-                              width: constraints.maxWidth * .4,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: Image.asset(widget.imgpath,
-                                          fit: BoxFit.fill),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 2.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(60)),
-                                      child: Text(
-                                        "MZN ${widget.price}",
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w700),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: CircleAvatar(
-                                        backgroundColor: whiteColor,
-                                        child: InkWell(
-                                          child: Center(
-                                            child: Icon(
-                                              Icons.favorite,
-                                              color: widget.fav
-                                                  ? Colors.red
-                                                  : secundaryColor,
-                                            ),
-                                          ),
-                                          onTap: () {},
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+      child: Card(
+        elevation: 2,
+        color: productColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8.0),
+          child: SizedBox(
+            height: 400,
+            child: Builder(builder: (context) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: size.width * .31,
+                    height: size.height * .14,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Image.asset(widget.imgpath, fit: BoxFit.fill),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(60)),
+                        child: Text(
+                          "MZN ${widget.price}",
+                          style: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: CircleAvatar(
+                          backgroundColor: whiteColor,
+                          child: InkWell(
+                            child: Center(
+                              child: Icon(
+                                Icons.favorite,
+                                color:
+                                    widget.fav ? Colors.red : secundaryColor,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: SizedBox(
-                                  child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            widget.name,
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w300),
-                                          ),
-                                        ),
-                                        _stars(widget.star),
-                                        Visibility(
-                                          visible: !qtd,
-                                          child: SizedBox(
-                                            height: 38,
-                                            width: 70,
-                                            child: OutlinedButton(
-                                              style: OutlinedButton.styleFrom(
-                                                side: BorderSide(
-                                                    color: primaryColor,
-                                                    width: 1),
-                                              ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  qtd = !qtd;
-                                                });
-                                              },
-                                              child: Text(
-                                                "Add",
-                                                style: TextStyle(
-                                                    color: primaryColor),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Visibility(
-                                            visible: qtd,
-                                            child: GestureDetector(
-                                                onTap: () {},
-                                                child: SizedBox(
-                                                    height: 38,
-                                                    child: textfiledQTD(
-                                                        textController))))
-                                      ]),
-                                ),
-                              )
-                            ],
+                            ),
+                            onTap: () {},
                           ),
-                        ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.name,
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w300),
                       ),
                     ),
                   ),
-                ),
-              ),
-            ],
+                  _stars(widget.star),
+                  Visibility(
+                    visible: !qtd,
+                    child: SizedBox(
+                      height: size.height / 21,
+                      width: size.width / 5,
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide(color: primaryColor, width: 1),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            qtd = !qtd;
+                            print(size.width * .31);
+                            print(size.height * .149);
+                          });
+                        },
+                        child: Text(
+                          "Add",
+                          style: TextStyle(color: primaryColor),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                      visible: qtd,
+                      child: GestureDetector(
+                          onTap: () {},
+                          child: SizedBox(
+                              height: size.height / 21,
+                              child: textfiledQTD(textController))))
+                ],
+              );
+            }),
           ),
         ),
-      );
-    });
+      ),
+    );
   }
 
   Widget _stars(int star) {
